@@ -45,8 +45,6 @@ EM_1 <- function(data,
   par
 }
 
-initpar <- c(1, 5)
-
 est <- EM_1(data = X, par = initpar, nu = nu, prints = TRUE)
 
 grad_Qfunc <- function(par,
