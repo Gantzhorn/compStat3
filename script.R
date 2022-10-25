@@ -28,11 +28,12 @@ source("~/Desktop/Skole/Compstat/Assignment3/rScript/assignment3/EM_1.R")
 source("~/Desktop/Skole/Compstat/Assignment3/rScript/assignment3/gradient_descent.R")
 #Rcpp implementation
 Rcpp::sourceCpp("EM_CPP.cpp")
-est_cpp = EM_CPP(X,initpar, nu, 1e-5, maxiter = 50)
+est_cpp <- EM_CPP(X,initpar, nu, 1e-5, maxiter = 50)
 #profiling
 profvis::profvis(source("~/Desktop/Skole/Compstat/Assignment3/rScript/assignment3/EM_1.R"))
 
 #Benchmarking
-a <-microbenchmark::microbenchmark(EM_1(data = X, par = initpar, nu = nu), times = 10000)
+a <-microbenchmark::microbenchmark(EM_1(data = X, par = initpar, nu = nu),
+                                   EM_CPP(X,initpar, nu, 1e-5, maxiter = 50), times = 10000)
 
 ggplot2::autoplot(a)

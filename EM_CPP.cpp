@@ -7,7 +7,7 @@ Rcpp::NumericVector eStepcpp(Rcpp::NumericVector x, double mu, double sig_sq, do
 // [[Rcpp::export]]
 Rcpp::NumericVector mStepcpp(Rcpp::NumericVector x, Rcpp::NumericVector E, double nu) {
   int N = x.size();
-  double mu_est = sum(x)/(sum(x*E));
+  double mu_est = sum(E*x)/(sum(E));
   double sigma_sq_est = 1/(N*nu)*sum(E*pow(x-mu_est,2));
   Rcpp::NumericVector out(2);
   out[0] = mu_est; out[1] = sigma_sq_est;
@@ -20,7 +20,7 @@ Rcpp::NumericVector EM_CPP(Rcpp::NumericVector x,
                            double epsilon,
                            int maxiter
                            ){
-  for(int i = 0; i<maxiter; ++i){
+  for(int i = 0; i<maxiter+1; ++i){
     Rcpp::NumericVector par0 = par;
     par = mStepcpp(x,
                    eStepcpp(x,
