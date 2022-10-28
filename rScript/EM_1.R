@@ -27,25 +27,23 @@ EM_1 <- function(data,
                  trace = NULL,
                  prints = FALSE){
   for(i in 1:maxiter){
-  par0 <- par
-  par <- Mstep0(data,
-    Estep0(
-    data,
-    par0[1],
-    par0[2],
-    nu)$Q1,
-    nu)
-  # if(!is.null(trace)) CSwR::tracer()
-  if(sum((par-par0)^2) <= epsilon * (sum(par^2)+epsilon)) break
+    par0 <- par
+    par <- Mstep0(data,
+                  Estep0(
+                    data,
+                    par0[1],
+                    par0[2],
+                    nu)$Q1,
+                  nu)
+    # if(!is.null(trace)) CSwR::tracer()
+    if(sum((par-par0)^2) <= epsilon * (sum(par^2)+epsilon)) break
   }
-if(i == maxiter) {base::warning("Maximum number of iterations reached")}
-if(prints == TRUE && i < maxiter){
-  print(glue::glue("Convergence reached after ", i, " steps."))
+  if(i == maxiter) {base::warning("Maximum number of iterations reached")}
+  if(prints == TRUE && i < maxiter){
+    print(glue::glue("Convergence reached after ", i, " steps."))
   }
-par
+  par
 }
-
-initpar <- c(1, 5)
 
 est <- EM_1(data = X, par = initpar, nu = nu, prints = TRUE)
 
