@@ -4,7 +4,7 @@ Rcpp::NumericVector eStepcpp(Rcpp::NumericVector x, double mu, double sig_sq, do
   Rcpp::NumericVector Q = (nu*sig_sq*(nu+1))/(nu*sig_sq+pow(x-mu,2));
   return Q;
 }
-// [[Rcpp::export]]
+
 Rcpp::NumericVector mStepcpp(Rcpp::NumericVector x, Rcpp::NumericVector E, double nu) {
   int N = x.size();
   double mu_est = sum(E*x)/(sum(E));
