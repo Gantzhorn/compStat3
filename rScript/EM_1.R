@@ -28,6 +28,7 @@ EM_1 <- function(data,
                  prints = FALSE){
   for(i in 1:maxiter){
     par0 <- par
+
     par <- Mstep0(data,
                   Estep0(
                     data,
@@ -35,7 +36,7 @@ EM_1 <- function(data,
                     par0[2],
                     nu)$Q1,
                   nu)
-    # if(!is.null(trace)) CSwR::tracer()
+    if(!is.null(trace)) trace()
     if(sum((par-par0)^2) <= epsilon * (sum(par^2)+epsilon)) break
   }
   if(i == maxiter) {base::warning("Maximum number of iterations reached")}
