@@ -1,9 +1,9 @@
-PWD /home/anders/Desktop/Skole/Compstat/Assignment3/Notes
+PWD /home/anders/Desktop/Skole/Compstat/Assignment3/compStat3/Notes
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/anders/Desktop/Skole/Compstat/Assignment3/Notes/EM_assignment1_notes.tex
+INPUT /home/anders/Desktop/Skole/Compstat/Assignment3/compStat3/Notes/EM_assignment1_notes.tex
 OUTPUT EM_assignment1_notes.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
